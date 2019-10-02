@@ -10,17 +10,31 @@ namespace Rps.Tests
   [TestClass]
   public class RpsTest
   {
+    Game game;
+
+    [TestInitialize]
+    public void Startup()
+    {
+        game = new Game(1,2);
+        game.Results.Add("s");
+        game.Results.Add("r");
+    }
+
+    [TestCleanup]
+    public void testClean()
+    {
+        game = null;
+    }
+
     [TestMethod]
     public void CheckUserInput_ReturnConvertedString_String()
     {
-        Game game = new Game(1,2);
         string p1Value = game.CheckUserInput("Scissors");
         Assert.AreEqual("s", p1Value);
     }
     [TestMethod]
     public void CheckUserInput_ReturnErrorIfNoTValid_String()
     {
-        Game game = new Game(1,2);
         string p1Value = game.CheckUserInput("sock");
         Assert.AreEqual("Error", p1Value);  
     }
@@ -28,16 +42,13 @@ namespace Rps.Tests
     [TestMethod]
     public void ResultsProp_StoreValidUserValues_ListOfStrings()
     {
-        Game game = new Game(1,2);
-        game.Results.Add("s");
-        game.Results.Add("r");
         List<string> expected = new List<string>(){"s", "r"};
         Assert.AreEqual(true,expected.SequenceEqual(game.Results));  
     }
     [TestMethod]
     public void CheckDraw_CheckForDrawCondition_True()
     {
-        Game game = new Game(1,2);
+        game = new Game(1,2);
         game.Results.Add("s");
         game.Results.Add("s");
         bool draw = game.CheckDraw();
@@ -47,9 +58,6 @@ namespace Rps.Tests
     [TestMethod]
     public void ValueCount_CountResultValues_Dictionary()
     {   
-        Game game = new Game(1,2);
-        game.Results.Add("s");
-        game.Results.Add("r");
         Dictionary<string,int> counts = game.ValueCount();
         int rCount = counts.Where(value => value.Key == "r").FirstOrDefault().Value;
         int sCount = counts.Where(value => value.Key == "s").FirstOrDefault().Value;
@@ -59,20 +67,36 @@ namespace Rps.Tests
         Assert.AreEqual(1, sCount);
         Assert.AreEqual(0, pCount);
     }
-    
+
     [TestMethod]
     public void CountWinsLosses_CountWinsAndLosses_IntArray()
     {   
-        Game game = new Game(1,2);
-        game.Results.Add("s");
-        game.Results.Add("r");
         Dictionary<string,int> counts = game.ValueCount();
-        int[] P1 = {0,1};
-        int[] P2 = {1,0};
-        List<int[]> expected = new List<int[]>(){P1,P2};
+        int P1 = -1;
+        int P2 = 1;
+        List<int> expected = new List<int>(){P1,P2};
 
-        Assert.AreEqual(true,expected[0].SequenceEqual(game.CountWinsAndLosses(counts)[0]));
-        Assert.AreEqual(true,expected[1].SequenceEqual(game.CountWinsAndLosses(counts)[1]));
+        Assert.AreEqual(true,expected.SequenceEqual(game.CountWinsAndLosses(counts)));
+    }
+
+    [TestMethod]
+    public void DeclareWinner_DecidesWinner_String()
+    {
+        Dictionary<string,int> countResultTypes = game.ValueCount();
+        List<int> winLoseList = game.CountWinsAndLosses(countResultTypes);
+        string winner = game.DeclareWinner(winLoseList);
+
+        Assert.AreEqual("Player 2", winner);
+    }
+    [TestMethod]
+    public void OverAllWinner_CheckOverAllWinCondition_String()
+    {
+        Dictionary<string,int> countResultTypes = game.ValueCount();
+        List<int> winLoseList = game.CountWinsAndLosses(countResultTypes);
+        string winner = game.DeclareWinner(winLoseList);
+        List<string> winners = game.OverAllWinner();
+        List<string> expected = new List<string> (){"Player 2"};
+        CollectionAssert.AreEquivalent(expected,winners);
     }
   }
 }
