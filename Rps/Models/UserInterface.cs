@@ -8,7 +8,15 @@ namespace UI
         public static string GetUserInput(string playerName)
         {
             Console.WriteLine(playerName + " enter your value:");
-            return Console.ReadLine().ToLower();
+            string input = null;
+            while (true)
+            {
+                var key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Enter)
+                    break;
+                input += key.KeyChar;
+            }
+            return input.ToLower();
         }
 
         public static int GetUserNum()

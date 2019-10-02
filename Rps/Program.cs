@@ -18,7 +18,7 @@ class Program
         for(int i = 0; i<game.Rounds; i++)
         {
             game.PlayRound();
-            List<string> overallWinner = game.OverAllWinner();
+            List<string> overallWinner = game.OverAllWinner(i);
             if(overallWinner.Count > 0)
             {
                 break;
@@ -29,8 +29,9 @@ class Program
         Console.BackgroundColor = ConsoleColor.DarkYellow;
         Console.ForegroundColor = ConsoleColor.Black;
 
-        Console.WriteLine("OH MY GOSH! MASTERFUL WINNER " + string.Join(",", game.OverAllWinner().ToArray()));
+        Console.WriteLine("OH MY GOSH! MASTERFUL WINNER " + string.Join(",", game.OverAllWinner(game.Rounds).ToArray()));
 
+        Console.ResetColor();
     }
 
     public static int AskForNumber(string message, string errorMsg)

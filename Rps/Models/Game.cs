@@ -10,7 +10,7 @@ namespace Rps.Models
         public List<string> ValidValues {get;}
         public List<string> Results {get; set;}
         public List<int> WINES {get;}
-        public int Rounds {get;}
+        public int Rounds {get; set;}
         public int PlayerCount {get;}
         public Dictionary<string,string[]> WinRules {get;}
         public Dictionary<string,string[]> LossRules {get;}
@@ -69,14 +69,17 @@ namespace Rps.Models
             }
         }
 
-        public void PlayRound()
+        public void PlayRound(int roundNum)
         {
+            System.Console.WriteLine("");
+            System.Console.WriteLine("----- ROUND " + roundNum + " -----");
+            System.Console.WriteLine("");
             GetAllPlayerValues();
             Dictionary<string,int> countResultTypes = ValueCount();
             List<int> winLoseList = CountWinsAndLosses(countResultTypes);
             string winner = DeclareWinner(winLoseList);
             Console.WriteLine("Round Winner(s): " + winner + "!");
-            System.Console.WriteLine("------------------");
+            System.Console.WriteLine("-------------------");
         }
         public bool CheckDraw()
         {
@@ -167,16 +170,34 @@ namespace Rps.Models
              return winner;
 
         }
-        public List<string> OverAllWinner()
+        public List<string> OverAllWinner(int roundNum)
         {
             List<string> gameWinners = new List<string>();
-            for(int i = 0; i<WINES.Count; i++)
-            {
-                if(WINES[i] == (Rounds/2+1))
+            if(roundNum < Rounds){
+                for(int i = 0; i<WINES.Count; i++)
                 {
-                    gameWinners.Add("Player " + (i+1).ToString());
+                    if(WINES[i] == (Rounds/2+1))
+                    {
+                        gameWinners.Add("Player " + (i+1).ToString());
+                    }
+                } 
+            }
+            else
+            {
+                int max = WINES.Max();
+                for(int i = 0; i<WINES.Count; i++)
+                {
+                    if(WINES[i] == max)
+                    {
+                        gameWinners.Add("Player " + (i+1).ToString());
+                    }
+                } 
+
+                if(gameWinners.Count == PlayerCount)
+                {
+                    Rounds++;
                 }
-            } 
+            }
             return gameWinners;               
         }
     }
