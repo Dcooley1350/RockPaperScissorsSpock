@@ -61,11 +61,20 @@ namespace Rps.Models
                 string result = "Error";
                 while(result == "Error")
                 {
-                    result = Interface.GetUserInput("Player "+i);
+                    result = Interface.GetUserInput("Player "+(i+1));
                     result = CheckUserInput(result);
                 }
                 Results.Add(result);
             }
+        }
+
+        public void PlayRound()
+        {
+            GetAllPlayerValues();
+            Dictionary<string,int> countResultTypes = ValueCount();
+            List<int> winLoseList = CountWinsAndLosses(countResultTypes);
+            string winner = DeclareWinner(winLoseList);
+            Console.WriteLine("Round Winner(s): " + winner + "!");
         }
         public bool CheckDraw()
         {
@@ -140,14 +149,18 @@ namespace Rps.Models
                 winner = "Player " + (winnerIndicies[0]+1).ToString();
                 WINES[winnerIndicies[0]]++;
              }
+             else if(winnerIndicies.Count == PlayerCount)
+             {
+                winner = "None";
+             }
              else
              {
-                 winner = "Draw between : ";
-                 foreach(int index in winnerIndicies)
-                 {
-                     winner += "Player " + (winnerIndicies[index]+1) + " ";
-                     WINES[winnerIndicies[index]]++;
-                 }
+                winner = "Draw between : ";
+                foreach(int index in winnerIndicies)
+                {
+                    winner += "Player " + (winnerIndicies[index]+1) + " ";
+                    WINES[winnerIndicies[index]]++;
+                }
              }
              return winner;
 
