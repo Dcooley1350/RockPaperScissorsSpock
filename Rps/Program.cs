@@ -17,7 +17,7 @@ class Program
         Game game = new Game(rounds, players);
         for(int i = 0; i<game.Rounds; i++)
         {
-            game.PlayRound();
+            game.PlayRound(i);
             List<string> overallWinner = game.OverAllWinner(i);
             if(overallWinner.Count > 0)
             {
