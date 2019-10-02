@@ -59,7 +59,7 @@ namespace Rps.Tests
         Assert.AreEqual(1, sCount);
         Assert.AreEqual(0, pCount);
     }
-
+    
     [TestMethod]
     public void CountWinsLosses_CountWinsAndLosses_IntArray()
     {   
