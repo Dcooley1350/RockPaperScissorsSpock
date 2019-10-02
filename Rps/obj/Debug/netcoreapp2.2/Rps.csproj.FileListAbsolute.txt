@@ -1,0 +1,11 @@
+/Users/Guest/Desktop/Rps.Solution/Rps/bin/Debug/netcoreapp2.2/Rps.deps.json
+/Users/Guest/Desktop/Rps.Solution/Rps/bin/Debug/netcoreapp2.2/Rps.runtimeconfig.json
+/Users/Guest/Desktop/Rps.Solution/Rps/bin/Debug/netcoreapp2.2/Rps.runtimeconfig.dev.json
+/Users/Guest/Desktop/Rps.Solution/Rps/bin/Debug/netcoreapp2.2/Rps.dll
+/Users/Guest/Desktop/Rps.Solution/Rps/bin/Debug/netcoreapp2.2/Rps.pdb
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.csprojAssemblyReference.cache
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.csproj.CoreCompileInputs.cache
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.AssemblyInfoInputs.cache
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.AssemblyInfo.cs
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.dll
+/Users/Guest/Desktop/Rps.Solution/Rps/obj/Debug/netcoreapp2.2/Rps.pdb

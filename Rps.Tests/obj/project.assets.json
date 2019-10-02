@@ -1617,6 +1617,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "Rps/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Rps.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Rps.dll": {}
+        }
       }
     }
   },
@@ -5796,6 +5806,11 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "Rps/1.0.0": {
+      "type": "project",
+      "path": "../Rps/Rps.csproj",
+      "msbuildProject": "../Rps/Rps.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5803,7 +5818,8 @@
       "MSTest.TestAdapter >= 1.3.2",
       "MSTest.TestFramework >= 1.3.2",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "Rps >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5833,7 +5849,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/Guest/Desktop/Rps.Solution/Rps/Rps.csproj": {
+              "projectPath": "/Users/Guest/Desktop/Rps.Solution/Rps/Rps.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
