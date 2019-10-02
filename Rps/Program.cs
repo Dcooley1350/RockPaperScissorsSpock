@@ -30,8 +30,9 @@ class Program
         Console.ForegroundColor = ConsoleColor.Black;
 
         Console.WriteLine("OH MY GOSH! MASTERFUL WINNER " + string.Join(",", game.OverAllWinner(game.Rounds).ToArray()));
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-        Console.ResetColor();
     }
 
     public static int AskForNumber(string message, string errorMsg)
