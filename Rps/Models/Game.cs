@@ -8,7 +8,7 @@ namespace Rps.Models
     public class Game
     {
         public List<string> ValidValues {get;}
-        public List<string> Results {get;}
+        public List<string> Results {get; set;}
         public List<int> WINES {get;}
         public int Rounds {get;}
         public int PlayerCount {get;}
@@ -56,6 +56,7 @@ namespace Rps.Models
 
         public void GetAllPlayerValues()
         {
+            Results = new List<string>();
             for(int i = 0; i < PlayerCount; i++ )
             {
                 string result = "Error";
@@ -75,6 +76,7 @@ namespace Rps.Models
             List<int> winLoseList = CountWinsAndLosses(countResultTypes);
             string winner = DeclareWinner(winLoseList);
             Console.WriteLine("Round Winner(s): " + winner + "!");
+            System.Console.WriteLine("------------------");
         }
         public bool CheckDraw()
         {
@@ -156,10 +158,10 @@ namespace Rps.Models
              else
              {
                 winner = "Draw between : ";
-                foreach(int index in winnerIndicies)
+                foreach(int value in winnerIndicies)
                 {
-                    winner += "Player " + (winnerIndicies[index]+1) + " ";
-                    WINES[winnerIndicies[index]]++;
+                    winner += "Player " + (value+1) + " ";
+                    WINES[value]++;
                 }
              }
              return winner;

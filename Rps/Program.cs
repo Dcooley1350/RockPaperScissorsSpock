@@ -7,6 +7,9 @@ class Program
 {
     static void Main()
     {
+        Console.Clear();
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         int players = AskForNumber("How many players?", "Please enter the number of players.");
 
         int rounds = AskForNumber("How many rounds?", "Please enter the number of rounds.");
@@ -21,9 +24,12 @@ class Program
                 break;
             }
         }
-
+        Console.Clear();
         Console.WriteLine("Game Over!");
-        Console.WriteLine(string.Join(",", game.OverAllWinner().ToArray()));
+        Console.BackgroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.Black;
+
+        Console.WriteLine("OH MY GOSH! MASTERFUL WINNER " + string.Join(",", game.OverAllWinner().ToArray()));
 
     }
 
